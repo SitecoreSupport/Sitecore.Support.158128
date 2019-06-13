@@ -8,12 +8,12 @@ using Newtonsoft.Json.Linq;
 using Sitecore.Diagnostics;
 using Sitecore.EDS.Core.Dispatch;
 using Sitecore.EDS.Core.Exceptions;
+using Sitecore.EDS.Core.Net.Smtp;
 using Sitecore.EDS.Core.Reporting;
 using Sitecore.EDS.Providers.SparkPost.Configuration;
 using Sitecore.EDS.Providers.SparkPost.Dispatch;
 using Sitecore.Modules.EmailCampaign.Factories;
 using Sitecore.StringExtensions;
-using Sitecore.Support.EDS.Core.Net.Smtp;
 
 namespace Sitecore.Support.EDS.Providers.SparkPost.Dispatch
 {
@@ -93,12 +93,29 @@ namespace Sitecore.Support.EDS.Providers.SparkPost.Dispatch
     /// </returns>
     protected override async Task<DispatchResult> SendEmailAsync(EmailMessage message)
     {
-      message.ReturnPath = _returnPath;
+      for (var i = 0; i < _maxTries; i++)
+      {
+        message.ReturnPath = _returnPath;
+        try
+        {
+          var chilkatMessageTransport = new ChilkatMessageTransport(message);
+          var client = await _connectionPoolManager.GetSmtpConnectionAsync();
 
-      var chilkatMessageTransport = new ChilkatMessageTransport(message, _maxTries, _delay);
-      var client = await _connectionPoolManager.GetSmtpConnectionAsync();
+          return await chilkatMessageTransport.SendAsync(client);
+        }
+        // fix 158128
+        catch (TransportException)
+        {
 
-      return await chilkatMessageTransport.SendAsync(client);
+          if (i == _maxTries - 1)
+          {
+            throw;
+          }
+          EcmFactory.GetDefaultFactory().Io.Logger.LogInfo("Sending operation is failed. Connection attempt: " + (i + 1) + ". It is retried.");
+          Thread.Sleep(_delay);
+        }
+      }
+      return null;
     }
   }
 }
