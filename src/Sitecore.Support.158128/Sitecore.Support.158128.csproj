@@ -42,32 +42,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ChilkatDotNet45, Version=9.5.0.58, Culture=neutral, PublicKeyToken=eb5fc1fc52ef09bd, processorArchitecture=AMD64">
-      <HintPath>..\packages\EXM.ChilkatDotNet45.3.4.2\lib\ChilkatDotNet45.dll</HintPath>
+    <Reference Include="ChilkatDotNet46, Version=9.5.0.66, Culture=neutral, PublicKeyToken=eb5fc1fc52ef09bd, processorArchitecture=AMD64">
+      <HintPath>..\packages\SC.ChilkatDotNet46.9.0.2\lib\ChilkatDotNet46.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\SC.Newtonsoft.Json.9.0.2\lib\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.EDS.Core, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EXM.Sitecore.EDS.Core.3.4.2\lib\Sitecore.EDS.Core.dll</HintPath>
+    <Reference Include="Sitecore.EDS.Core, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EXM.Sitecore.EDS.Core.3.5.2\lib\Sitecore.EDS.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.EDS.Providers.SparkPost, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EXM.Sitecore.EDS.Providers.SparkPost.3.4.2\lib\Sitecore.EDS.Providers.SparkPost.dll</HintPath>
+    <Reference Include="Sitecore.EDS.Providers.SparkPost, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SC.Sitecore.EDS.Providers.SparkPost.9.0.1\lib\Sitecore.EDS.Providers.SparkPost.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.ExM.Framework, Version=4.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EXM.Sitecore.ExM.Framework.3.4.2\lib\Sitecore.ExM.Framework.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sitecore.Kernel">
-      <HintPath>..\packages\SC.Sitecore.Kernel.9.0.2\lib\Sitecore.Kernel.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sitecore.EmailCampaign">
-      <HintPath>..\packages\EXM.Sitecore.EmailCampaign.3.4.2\lib\Sitecore.EmailCampaign.dll</HintPath>
+    <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SC.Sitecore.Kernel.9.0.1\lib\Sitecore.Kernel.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
